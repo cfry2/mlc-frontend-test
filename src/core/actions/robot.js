@@ -1,6 +1,6 @@
 import { PLACE_ROBOT } from '../constants/actions'
 import {tableDimensions } from '../constants/table'
-import { placeTrophy } from './trophy'
+import { placeTrophy, checkIfPlacementPossible, removeTrophy } from './trophy'
 
 const calculateCoord = () => {
     return Math.floor(Math.random() * tableDimensions)
@@ -49,6 +49,7 @@ export const setupRobot = () =>  dispatch => {
 
 export const moveRobot = (type) => (dispatch, getState) => {
     const { position } = getState().robot
+    const {position: trophyPosition} = getState().trophy
     let newPosition;
     switch (type) {
         case 'up':
@@ -69,6 +70,12 @@ export const moveRobot = (type) => (dispatch, getState) => {
 
     const movePossible = checkIfCanMove(newPosition)
     if(movePossible) {
+        if(trophyPosition) {
+            const movedOnToTrophy = checkIfPlacementPossible(newPosition, trophyPosition)
+            if(movedOnToTrophy) {
+                dispatch(removeTrophy())
+            }
+        }
         dispatch({
             type: PLACE_ROBOT,
             position: {

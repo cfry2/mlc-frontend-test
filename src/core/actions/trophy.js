@@ -1,11 +1,11 @@
 import {tableDimensions } from '../constants/table'
-import { PLACE_TROPHY } from '../constants/actions'
+import { PLACE_TROPHY, REMOVE_TROPHY } from '../constants/actions'
 
 const calculateCoord = () => {
     return Math.floor(Math.random() * tableDimensions)
 }
 
-const checkIfPlacementPossible = (trophyPosition, robotPosition) => {
+export const checkIfPlacementPossible = (trophyPosition, robotPosition) => {
     return trophyPosition.x === robotPosition.x && trophyPosition.y === robotPosition.y
 }
 
@@ -26,3 +26,7 @@ export const placeTrophy = () => (dispatch, getState) => {
         }
     })
 }
+
+export const removeTrophy = () => ({
+    type: REMOVE_TROPHY
+})

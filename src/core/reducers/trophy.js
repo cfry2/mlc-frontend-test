@@ -1,4 +1,4 @@
-import { PLACE_TROPHY } from "../constants/actions"
+import { PLACE_TROPHY, REMOVE_TROPHY } from "../constants/actions"
 
 const trophyReducer = (state = {}, action) => {
     switch(action.type) {
@@ -8,6 +8,9 @@ const trophyReducer = (state = {}, action) => {
                 ...state,
                 position
             }
+        }
+        case REMOVE_TROPHY: {
+            return {}
         }
         default:
             return state
