@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import styles from './styles'
 import {tableDimensions} from '../../constants/table'
 import Robot from '../robot'
+import Trophy from '../trophy';
 
 export const setUpEmptyTable  = () => {
     const emptyTable = []
@@ -15,12 +16,16 @@ export const setUpEmptyTable  = () => {
     return emptyTable
 }
 
-const Table = ({robotPosition}) => {
+const Table = ({robotPosition, trophyPosition}) => {
     const classes = styles()
     const board = setUpEmptyTable()
     if(robotPosition) {
-        const {x, y} = robotPosition
-        board[y][x] = 'robot'
+        const {x: robotX, y: robotY} = robotPosition
+        board[robotY][robotX] = 'robot'
+        if(trophyPosition) {
+            const {x: trophyX, y: trophyY} = trophyPosition
+            board[trophyY][trophyX] = 'trophy'
+        }
     }
 
     return (
@@ -30,6 +35,7 @@ const Table = ({robotPosition}) => {
                     {x.map(y => 
                     <div className={classes.tableCell}>
                         {y === 'robot' && <Robot/>}
+                        {y === 'trophy' && <Trophy/>}
                     </div>
                     )}
                 </div>
@@ -39,10 +45,12 @@ const Table = ({robotPosition}) => {
 }
 
 const mapStateToProps = (state) => {
-    const { position } = state.robot
+    const { position: robotPosition } = state.robot
+    const {position: trophyPosition } = state.trophy
 
     return {
-        robotPosition: position
+        robotPosition,
+        trophyPosition 
     }
 }
 

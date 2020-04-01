@@ -1,5 +1,6 @@
 import { PLACE_ROBOT } from '../constants/actions'
 import {tableDimensions } from '../constants/table'
+import { placeTrophy } from './trophy'
 
 const calculateCoord = () => {
     return Math.floor(Math.random() * tableDimensions)
@@ -42,12 +43,11 @@ export const setupRobot = () =>  dispatch => {
             y: positionY
         }
     })
-
+    dispatch(placeTrophy())
     dispatch(bindRobotMoveEvents())
 }
 
 export const moveRobot = (type) => (dispatch, getState) => {
-    
     const { position } = getState().robot
     let newPosition;
     switch (type) {
