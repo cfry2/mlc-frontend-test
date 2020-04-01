@@ -1,7 +1,7 @@
 import React, {Component, Fragment} from 'react'
 import {connect} from 'react-redux'
 import Table from '../../components/table'
-import { setUpEmptyTable } from '../../actions/table'
+import { setupRobot } from '../../actions/robot'
 
 class Main extends Component {
     constructor(props) {
@@ -10,7 +10,7 @@ class Main extends Component {
     }
 
     componentDidMount() {
-        this.props.setUpEmptyTable()
+        this.props.setupRobot()
     }
 
     render() {
@@ -24,6 +24,6 @@ class Main extends Component {
 }
 
 const mapDispatchToProps = dispatch => ({
-    setUpEmptyTable: () => dispatch(setUpEmptyTable())
+    setupRobot: () => dispatch(setupRobot())
 })
 export default connect(null, mapDispatchToProps)(Main)

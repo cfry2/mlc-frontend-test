@@ -1,2 +1,3 @@
-// Table actions
-export const SETUP_EMPTY_TABLE = 'SETUP_EMPTY_TABLE'
+// Robot actions
+
+export const PLACE_ROBOT = 'PLACE_ROBOT'

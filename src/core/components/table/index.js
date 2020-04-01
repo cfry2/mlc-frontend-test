@@ -1,12 +1,37 @@
 import React, { Fragment } from 'react';
 import { connect } from 'react-redux'
+import styles from './styles'
+import {tableDimensions} from '../../constants/table'
+import Robot from '../robot'
 
-const Table = ({board}) => {
+export const setUpEmptyTable  = () => {
+    const emptyTable = []
+    for (let i =0; i < tableDimensions; i++) {
+        emptyTable.push([])
+        for (let x = 0; x < tableDimensions; x++) {
+            emptyTable[i].push('empty');
+        }
+    }
+    return emptyTable
+}
+
+const Table = ({robotPosition}) => {
+    const classes = styles()
+    const board = setUpEmptyTable()
+    if(robotPosition) {
+        const {x, y} = robotPosition
+        board[y][x] = 'robot'
+    }
+
     return (
         <Fragment>
             {board && board.map(x =>
-                <div>
-                    {x.map(y => <div>empty</div>)}
+                <div className={classes.tableRow}>
+                    {x.map(y => 
+                    <div className={classes.tableCell}>
+                        {y === 'robot' && <Robot/>}
+                    </div>
+                    )}
                 </div>
             )}
         </Fragment>
@@ -14,10 +39,10 @@ const Table = ({board}) => {
 }
 
 const mapStateToProps = (state) => {
-    const { board } = state.table
+    const { position } = state.robot
 
     return {
-        board
+        robotPosition: position
     }
 }
 
