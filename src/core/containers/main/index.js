@@ -1,6 +1,7 @@
 import React, {Component, Fragment} from 'react'
 import {connect} from 'react-redux'
 import Table from '../../components/table'
+import Controls from '../../components/controls'
 import { setupRobot } from '../../actions/robot'
 
 class Main extends Component {
@@ -17,6 +18,7 @@ class Main extends Component {
         return(
             <Fragment>
                 <Table/>
+                <Controls/>
             </Fragment>
         )
     }

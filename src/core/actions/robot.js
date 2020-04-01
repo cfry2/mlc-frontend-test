@@ -79,3 +79,11 @@ export const moveRobot = (type) => (dispatch, getState) => {
     }
     
 }
+
+export const setPosition = (position) => ({
+    type: PLACE_ROBOT,
+    position: {
+        x: position.x-1,
+        y: position.y-1
+    }
+})
