@@ -10,6 +10,16 @@ const Controls = ({ robotPosition, move, setPosition }) => {
   const [positionX, setPositionX] = useState(1);
   const [positionY, setPositionY] = useState(1);
 
+  const handleInput = (type, value) => {
+
+    const newPosition = Math.floor(value)
+      if(type === 'x') {
+        setPositionX(newPosition)
+      } else {
+        setPositionY(newPosition)
+      }
+  }
+
   return (
     <div className={classes.container}>
       <div className={classes.statusBar}>
@@ -36,7 +46,7 @@ const Controls = ({ robotPosition, move, setPosition }) => {
           min="1"
           max="5"
           value={positionX}
-          onChange={e => setPositionX(e.target.value)}
+          onChange={e => handleInput('x', e.target.value)}
         />
         <input
           className={classes.input}
@@ -44,7 +54,7 @@ const Controls = ({ robotPosition, move, setPosition }) => {
           min="1"
           max="5"
           value={positionY}
-          onChange={e => setPositionY(e.target.value)}
+          onChange={e => handleInput('y', e.target.value)}
         />
         <button className={classes.positionButton} onClick={() => setPosition({ x: positionX, y: positionY })}>
           Set position

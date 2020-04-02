@@ -1,8 +1,6 @@
-import React, { useEffect } from "react";
-import { connect } from "react-redux";
+import React from "react";
 import Table from "../../components/table";
 import Controls from "../../components/controls";
-import { setupRobot } from "../../actions/robot";
 import styles from "./styles";
 import { ThemeProvider } from "react-jss";
 import { JssProvider } from "react-jss";
@@ -27,9 +25,8 @@ const theme = {
   }
 };
 
-const Main = ({ setupRobot }) => {
+const Main = () => {
   const classes = styles();
-  useEffect(() => setupRobot(), [setupRobot]);
   return (
     <JssProvider jss={jss}>
       <ThemeProvider theme={theme}>
@@ -42,8 +39,4 @@ const Main = ({ setupRobot }) => {
   );
 };
 
-const mapDispatchToProps = dispatch => ({
-  setupRobot: () => dispatch(setupRobot())
-});
-
-export default connect(null, mapDispatchToProps)(Main);
+export default Main;
