@@ -1,1 +1,1 @@
-export const tableDimensions = 5
+export const tableDimensions = 5;
