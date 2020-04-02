@@ -4,6 +4,7 @@ import styles from "./styles";
 import { tableDimensions } from "../../constants/table";
 import Robot from "../robot";
 import Trophy from "../trophy";
+import PropTypes from 'prop-types'
 
 export const setUpEmptyTable = () => {
   const emptyTable = [];
@@ -31,10 +32,10 @@ const Table = ({ robotPosition, trophyPosition }) => {
   return (
     <div>
       {board &&
-        board.map(x => (
-          <div className={classes.tableRow}>
-            {x.map(y => (
-              <div className={classes.tableCell}>
+        board.map((x, index) => (
+          <div key={`x-${index}`} className={classes.tableRow}>
+            {x.map((y, index) => (
+              <div key={`y-${index}`} className={classes.tableCell}>
                 {y === "robot" && <Robot />}
                 {y === "trophy" && <Trophy />}
               </div>
@@ -54,5 +55,12 @@ const mapStateToProps = state => {
     trophyPosition
   };
 };
+
+
+Table.propTypes = {
+  robotPosition: PropTypes.object,
+  trophyPosition: PropTypes.object
+}
+
 
 export default connect(mapStateToProps)(Table);

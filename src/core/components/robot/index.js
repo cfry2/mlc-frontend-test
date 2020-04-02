@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import styles from "./styles";
 import { connect } from "react-redux";
 import { setVictoryDance } from "../../actions/robot";
+import PropTypes from 'prop-types'
 
 const Robot = ({ isDancing, stopDancing }) => {
   useEffect(() => {
@@ -23,5 +24,10 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => ({
   stopDancing: () => dispatch(setVictoryDance(false))
 });
+
+Robot.propTypes = {
+  isDancing: PropTypes.bool,
+  stopDancing: PropTypes.func
+}
 
 export default connect(mapStateToProps, mapDispatchToProps)(Robot);

@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { moveRobot, setPosition } from "../../actions/robot";
 import styles from "./styles";
 import {tableDimensions} from '../../constants/table'
+import PropTypes from 'prop-types'
 
 const Controls = ({ robotPosition, move, setPosition }) => {
   const classes = styles();
@@ -77,5 +78,11 @@ const mapDispatchToProps = dispatch => ({
   move: type => dispatch(moveRobot(type)),
   setPosition: position => dispatch(setPosition(position))
 });
+
+Controls.propTypes = {
+  robotPosition : PropTypes.object,
+  move: PropTypes.func,
+  setPosition: PropTypes.func,
+}
 
 export default connect(mapStateToProps, mapDispatchToProps)(Controls);
