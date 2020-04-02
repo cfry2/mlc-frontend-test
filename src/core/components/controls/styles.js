@@ -2,7 +2,10 @@ import {createUseStyles} from 'react-jss'
 
 const styles = createUseStyles(theme => ({
     container: {
-        width: '300px'
+        width: '100%',
+        [theme.breakpoints.largeUp]: {
+            width: '300px',
+        }
     },
     statusBar: {
         width: '100%',

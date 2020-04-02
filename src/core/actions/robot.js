@@ -33,17 +33,6 @@ const bindRobotMoveEvents = () => dispatch => {
 }
 
 export const setupRobot = () =>  dispatch => {
-    const positionX = calculateCoord()
-    const positionY = calculateCoord()
-
-    dispatch({
-        type: PLACE_ROBOT,
-        position: {
-            x: positionX,
-            y: positionY
-        }
-    })
-    dispatch(placeTrophy())
     dispatch(bindRobotMoveEvents())
 }
 
@@ -88,13 +77,16 @@ export const moveRobot = (type) => (dispatch, getState) => {
     
 }
 
-export const setPosition = (position) => ({
+export const setPosition = (position) => (dispatch) => {
+    dispatch(setVictoryDance(false))
+    dispatch({
     type: PLACE_ROBOT,
     position: {
         x: position.x-1,
         y: position.y-1
-    }
-})
+    }})
+    dispatch(placeTrophy())
+}
 
 export const setVictoryDance = (dance) => ({
     type: VICTORY_DANCE,

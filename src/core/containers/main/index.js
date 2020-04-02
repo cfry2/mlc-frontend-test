@@ -21,6 +21,9 @@ const theme = {
         slateBlue: '#978AE2',
         lilac: '#C8ADC0',
         dustStorm: '#EDD3C4'
+    },
+    breakpoints: {
+        largeUp: '@media (min-width: 1024px)',
     }
 }
 

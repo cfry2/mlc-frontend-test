@@ -7,14 +7,16 @@ const styles = createUseStyles(theme => ({
         border: 'solid 2px black',
         borderBottom: 'none',
         width: '250px',
+        margin: '0 auto',
         '&:last-child': {
             borderBottom: `solid 2px ${theme.colours.black}`,
             borderBottomLeftRadius: '3px',
-            borderBottomRightRadius: '3px'
+            borderBottomRightRadius: '3px',
+            marginBottom: '20px'
         },
         '&:first-child': {
             borderTopLeftRadius: '3px',
-            borderTopRightRadius: '3px'
+            borderTopRightRadius: '3px',
         }
         
     },

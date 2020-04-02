@@ -14,7 +14,7 @@ const Controls = ({robotPosition, move, setPosition}) => {
 
     return (<div className={classes.container}>
         <div className={classes.statusBar}>
-            Status - X: {x+1} Y: {y+1}
+            Status - X: {x+1 || 0} Y: {y+1 || 0}
         </div>
         <div>
             <button className={classes.button} onClick={() => move('up')}>Up</button>

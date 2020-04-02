@@ -2,13 +2,17 @@ import {createUseStyles} from 'react-jss'
 
 const styles = createUseStyles({
     container: {
-        display: 'flex',
         maxWidth: '800px',
+        width: '100%',
         margin: '0 auto',
-        marginTop: '150px',
+        marginTop: '40px',
         justifyContent: 'center',
-        '& > div:first-child': {
-            marginRight: '50px'
+        '@media (min-width: 1024px)': {
+            display: 'flex',
+            marginTop: '150px',
+            '& > div:first-child': {
+                marginRight: '50px'
+            }
         }
     },
     '@global': {
