@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { connect } from "react-redux";
 import { moveRobot, setPosition } from "../../actions/robot";
 import styles from "./styles";
+import {tableDimensions} from '../../constants/table'
 
 const Controls = ({ robotPosition, move, setPosition }) => {
   const classes = styles();
@@ -11,13 +12,14 @@ const Controls = ({ robotPosition, move, setPosition }) => {
   const [positionY, setPositionY] = useState(1);
 
   const handleInput = (type, value) => {
-
     const newPosition = Math.floor(value)
+    if(newPosition >= 0 && newPosition <= tableDimensions) {
       if(type === 'x') {
         setPositionX(newPosition)
       } else {
         setPositionY(newPosition)
       }
+    }
   }
 
   return (
@@ -44,7 +46,7 @@ const Controls = ({ robotPosition, move, setPosition }) => {
           className={classes.input}
           type="number"
           min="1"
-          max="5"
+          max={tableDimensions}
           value={positionX}
           onChange={e => handleInput('x', e.target.value)}
         />
@@ -52,7 +54,7 @@ const Controls = ({ robotPosition, move, setPosition }) => {
           className={classes.input}
           type="number"
           min="1"
-          max="5"
+          max={tableDimensions}
           value={positionY}
           onChange={e => handleInput('y', e.target.value)}
         />
