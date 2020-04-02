@@ -1,4 +1,4 @@
-import { PLACE_ROBOT } from '../constants/actions'
+import { PLACE_ROBOT, VICTORY_DANCE } from '../constants/actions'
 import {tableDimensions } from '../constants/table'
 import { placeTrophy, checkIfPlacementPossible, removeTrophy } from './trophy'
 
@@ -74,6 +74,7 @@ export const moveRobot = (type) => (dispatch, getState) => {
             const movedOnToTrophy = checkIfPlacementPossible(newPosition, trophyPosition)
             if(movedOnToTrophy) {
                 dispatch(removeTrophy())
+                dispatch(setVictoryDance(true))
             }
         }
         dispatch({
@@ -93,4 +94,9 @@ export const setPosition = (position) => ({
         x: position.x-1,
         y: position.y-1
     }
+})
+
+export const setVictoryDance = (dance) => ({
+    type: VICTORY_DANCE,
+    value: dance
 })
