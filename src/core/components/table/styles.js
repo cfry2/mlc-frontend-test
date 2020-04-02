@@ -1,29 +1,32 @@
 import {createUseStyles} from 'react-jss'
 
-const styles = createUseStyles({
+const styles = createUseStyles(theme => ({
     tableRow: {
         display: 'flex',
-        flexRow: 'row wrap',
-        border: 'solid 1px black',
+        flexDirection: 'row',
+        border: 'solid 2px black',
         borderBottom: 'none',
-        width: '500px',
+        width: '250px',
         '&:last-child': {
-            borderBottom: 'solid 1px black'
+            borderBottom: `solid 2px ${theme.colours.black}`,
+            borderBottomLeftRadius: '3px',
+            borderBottomRightRadius: '3px'
+        },
+        '&:first-child': {
+            borderTopLeftRadius: '3px',
+            borderTopRightRadius: '3px'
         }
         
     },
     tableCell: {
-        width: '100px',
-        height: '100px',
-        borderRight: 'solid 1px black',
+        width: '50px',
+        height: '50px',
+        borderRight: `solid 2px ${theme.colours.black}`,
         '&:last-child': {
             borderRight: 'none'
         }
         
-    },
-    cellWithRobot: {
-        background: 'green'
     }
-})
+}))
 
 export default styles

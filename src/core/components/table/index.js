@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import { connect } from 'react-redux'
 import styles from './styles'
 import {tableDimensions} from '../../constants/table'
@@ -29,7 +29,7 @@ const Table = ({robotPosition, trophyPosition}) => {
     }
 
     return (
-        <Fragment>
+        <div>
             {board && board.map(x =>
                 <div className={classes.tableRow}>
                     {x.map(y => 
@@ -40,7 +40,7 @@ const Table = ({robotPosition, trophyPosition}) => {
                     )}
                 </div>
             )}
-        </Fragment>
+        </div>
     )
 }
 
